@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const Register = () => {
   // const = handleGoogleSignUp
@@ -54,7 +55,7 @@ const Register = () => {
                   >
                     {/* google logo */}
                     {googleLoading ? (
-                      <p>hi</p>
+                      <Loading></Loading>
                     ) : (
                       <svg
                         width="20"
