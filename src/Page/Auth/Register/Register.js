@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import toast from "react-hot-toast";
@@ -10,10 +13,25 @@ const Register = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  if (googleError) {
+  const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const handleCreateUserWithEmail = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass = e.target.pass.value;
+    const confirmPass = e.target.confirmPass.value;
+    if (pass === confirmPass) {
+      createUserWithEmailAndPassword(email, pass);
+    }
+
+    e.target.reset();
+    console.log(email, pass, confirmPass);
+  };
+  if (googleError || emailError) {
     toast.error("Registration failed!");
   }
-  if (googleUser) {
+  if (googleUser || emailUser) {
     toast.success("Registration Successful");
     navigate("/");
   }
@@ -89,7 +107,10 @@ const Register = () => {
                   </label>
                   <hr className="border-gray-300 border-1 w-full rounded-md" />
                 </div>
-                <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+                <form
+                  onSubmit={handleCreateUserWithEmail}
+                  className="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+                >
                   <div className="mb-4 md:flex md:justify-between">
                     <div className="mb-4 md:mr-2 md:mb-0">
                       <label
@@ -103,6 +124,7 @@ const Register = () => {
                         id="firstName"
                         type="text"
                         placeholder="First Name"
+                        required
                       />
                     </div>
                     <div className="md:ml-2">
@@ -117,6 +139,7 @@ const Register = () => {
                         id="lastName"
                         type="text"
                         placeholder="Last Name"
+                        required
                       />
                     </div>
                   </div>
@@ -132,6 +155,7 @@ const Register = () => {
                       id="email"
                       type="email"
                       placeholder="Email"
+                      required
                     />
                   </div>
                   <div className="mb-4 md:flex md:justify-between">
@@ -144,9 +168,11 @@ const Register = () => {
                       </label>
                       <input
                         className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                        id="password"
+                        id="pass"
                         type="password"
                         placeholder="******************"
+                        required
+                        autoComplete={false}
                       />
                       <p className="text-xs italic text-red-500">
                         Please choose a password.
@@ -161,16 +187,18 @@ const Register = () => {
                       </label>
                       <input
                         className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                        id="c_password"
+                        id="confirmPass"
                         type="password"
                         placeholder="******************"
+                        required
+                        autoComplete={false}
                       />
                     </div>
                   </div>
                   <div className="mb-6 text-center">
                     <button
                       className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                      type="button"
+                      type="submit"
                     >
                       Register Account
                     </button>

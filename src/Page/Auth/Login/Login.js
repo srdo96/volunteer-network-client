@@ -69,6 +69,9 @@ const Login = () => {
                   Google
                 </button>
               </div>
+              {googleError && (
+                <p className="text-red-500 mt-2">{googleError.message}</p>
+              )}
               <div className="mt-8">
                 <form action="#" autoComplete="off">
                   <div className="flex flex-col mb-2">
