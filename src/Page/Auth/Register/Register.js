@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -16,20 +17,20 @@ const Register = () => {
               ></div>
 
               <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-                <h3 className="pt-4 text-2xl text-center">
-                  Create an Account!
+                <h3 className="pt-4 text-2xl text-center mb-5">
+                  Create an Account with <span className="italic">!</span>
                 </h3>
-                {/* ------------------------- */}
-                <div class="flex gap-4 item-center justify-center">
+
+                <div className="flex gap-4 item-center justify-center">
                   <button
                     type="button"
-                    class="py-2 px-4 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    className="py-2 px-4 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full "
                   >
                     <svg
                       width="20"
                       height="20"
                       fill="currentColor"
-                      class="mr-2"
+                      className="mr-2"
                       viewBox="0 0 1792 1792"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -38,13 +39,13 @@ const Register = () => {
                   </button>
                   <button
                     type="button"
-                    class="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    className="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full "
                   >
                     <svg
                       width="20"
                       height="20"
                       fill="currentColor"
-                      class="mr-2"
+                      className="mr-2"
                       viewBox="0 0 1792 1792"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -52,7 +53,7 @@ const Register = () => {
                     </svg>
                   </button>
                 </div>
-                {/* ------------------------------ */}
+
                 <div className="flex mt-7 items-center text-center">
                   <hr className="border-gray-300 border-1 w-full rounded-md" />
                   <label className="block font-medium text-sm text-gray-600 w-full">
@@ -147,21 +148,14 @@ const Register = () => {
                     </button>
                   </div>
                   <hr className="mb-6 border-t" />
+
                   <div className="text-center">
-                    <a
+                    <Link
                       className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                      href="#"
-                    >
-                      Forgot Password?
-                    </a>
-                  </div>
-                  <div className="text-center">
-                    <a
-                      className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                      href="./index.html"
+                      to="/login"
                     >
                       Already have an account? Login!
-                    </a>
+                    </Link>
                   </div>
                 </form>
               </div>

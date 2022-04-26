@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import loginCover from "../../../img/9.jpg";
 
 const Login = () => {
@@ -92,12 +93,12 @@ const Login = () => {
                   </div>
                   <div className="flex items-center mb-6 -mt-4">
                     <div className="flex ml-auto">
-                      <a
-                        href="#"
-                        className="inline-flex text-xs  sm:text-sm   "
+                      <Link
+                        className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                        to="/login"
                       >
                         Forgot Password?
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="flex w-full">
@@ -112,12 +113,12 @@ const Login = () => {
               </div>
               <div className="flex items-center justify-center mt-6">
                 <div className="pt-2 pb-12 text-center">
-                  <p>
-                    Don&#x27;t have an account?
-                    <a href="#" className="font-semibold ml-2 underline">
-                      Register here.
-                    </a>
-                  </p>
+                  <Link
+                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    to="/register"
+                  >
+                    <p>Don&#x27;t have an account? Register here.</p>
+                  </Link>
                 </div>
               </div>
             </div>
