@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   useCreateUserWithEmailAndPassword,
@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 
 const Register = () => {
   const navigate = useNavigate();
+  const [isMatch, setIsMatch] = useState(true);
+
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
@@ -23,10 +25,11 @@ const Register = () => {
     const confirmPass = e.target.confirmPass.value;
     if (pass === confirmPass) {
       createUserWithEmailAndPassword(email, pass);
+      setIsMatch(true);
+    } else {
+      setIsMatch(false);
     }
-
     e.target.reset();
-    console.log(email, pass, confirmPass);
   };
   if (googleError || emailError) {
     toast.error("Registration failed!");
@@ -158,7 +161,11 @@ const Register = () => {
                       required
                     />
                   </div>
-                  <div className="mb-4 md:flex md:justify-between">
+                  <div
+                    className={`${
+                      isMatch && `mb-2`
+                    } md:flex md:justify-between`}
+                  >
                     <div className="mb-4 md:mr-2 md:mb-0">
                       <label
                         className="block mb-2 text-sm font-bold text-gray-700"
@@ -167,16 +174,15 @@ const Register = () => {
                         Password
                       </label>
                       <input
-                        className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                        className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${
+                          isMatch || `border-red-500`
+                        } rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
                         id="pass"
                         type="password"
                         placeholder="******************"
                         required
                         autoComplete={false}
                       />
-                      <p className="text-xs italic text-red-500">
-                        Please choose a password.
-                      </p>
                     </div>
                     <div className="md:ml-2">
                       <label
@@ -186,7 +192,9 @@ const Register = () => {
                         Confirm Password
                       </label>
                       <input
-                        className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                        className={`w-full px-3 py-2 mb-3 text-sm leading-tight ${
+                          isMatch || `border-red-500`
+                        } text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
                         id="confirmPass"
                         type="password"
                         placeholder="******************"
@@ -195,14 +203,23 @@ const Register = () => {
                       />
                     </div>
                   </div>
+                  {isMatch || (
+                    <p className="italic text-red-500">
+                      Password do not match. Please retype the new password in
+                      both boxes.
+                    </p>
+                  )}
                   <div className="mb-6 text-center">
                     <button
-                      className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                      className="w-full mt-2 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                       type="submit"
                     >
-                      Register Account
+                      {emailLoading ? <Loading /> : <p>Register Account</p>}
                     </button>
                   </div>
+                  {emailError && (
+                    <p className="text-red-500">{emailError.message}</p>
+                  )}
                   <hr className="mb-6 border-t" />
 
                   <div className="text-center">
