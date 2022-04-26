@@ -2,7 +2,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import loginCover from "../../../img/9.jpg";
 import toast from "react-hot-toast";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
@@ -11,10 +14,20 @@ const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  if (googleError) {
-    toast.error("Login failed!");
+  const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleEmailLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass = e.target.pass.value;
+    signInWithEmailAndPassword(email, pass);
+  };
+
+  if (googleError || emailError) {
+    toast.error("Login failed. Try again!");
   }
-  if (googleUser) {
+  if (googleUser || emailUser) {
     toast.success("Login Successful");
     navigate("/");
   }
@@ -73,7 +86,7 @@ const Login = () => {
                 <p className="text-red-500 mt-2">{googleError.message}</p>
               )}
               <div className="mt-8">
-                <form action="#" autoComplete="off">
+                <form onSubmit={handleEmailLogin}>
                   <div className="flex flex-col mb-2">
                     <div className="flex relative ">
                       <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -89,7 +102,7 @@ const Login = () => {
                       </span>
                       <input
                         type="text"
-                        id="sign-in-email"
+                        id="email"
                         className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                         placeholder="Your email"
                       />
@@ -110,7 +123,7 @@ const Login = () => {
                       </span>
                       <input
                         type="password"
-                        id="sign-in-email"
+                        id="pass"
                         className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                         placeholder="Your password"
                       />
