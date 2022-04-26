@@ -53,7 +53,13 @@ const Register = () => {
                   </button>
                 </div>
                 {/* ------------------------------ */}
-
+                <div className="flex mt-7 items-center text-center">
+                  <hr className="border-gray-300 border-1 w-full rounded-md" />
+                  <label className="block font-medium text-sm text-gray-600 w-full">
+                    or
+                  </label>
+                  <hr className="border-gray-300 border-1 w-full rounded-md" />
+                </div>
                 <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                   <div className="mb-4 md:flex md:justify-between">
                     <div className="mb-4 md:mr-2 md:mb-0">
