@@ -57,14 +57,14 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a
-              href="/"
+            <Link
+              to="/register"
               className="inline-flex items-center justify-center h-9 px-4 font-medium tracking-wide text-white bg-blue-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
               aria-label="Register"
               title="Register"
             >
               Register
-            </a>
+            </Link>
           </li>
           <li>
             <Link
