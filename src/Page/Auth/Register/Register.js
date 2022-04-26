@@ -1,14 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  // const = handleGoogleSignUp
+  const navigate = useNavigate();
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
+  if (googleError) {
+    toast.error("Registration failed!");
+  }
+  if (googleUser) {
+    toast.success("Registration Successful");
+    navigate("/");
+  }
   return (
     <div>
       <body className="">

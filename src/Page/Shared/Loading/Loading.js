@@ -5,13 +5,13 @@ const Loading = () => {
     <div>
       <button
         type="button"
-        class="py-2 px-4 flex justify-center items-center focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+        className="py-2 px-4 flex justify-center items-center focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
       >
         <svg
           width="20"
           height="20"
           fill="currentColor"
-          class="mr-2 animate-spin"
+          className="mr-2 animate-spin"
           viewBox="0 0 1792 1792"
           xmlns="http://www.w3.org/2000/svg"
         >
