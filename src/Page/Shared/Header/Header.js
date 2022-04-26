@@ -67,20 +67,20 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a
-              href="/"
+            <Link
+              to="/login"
               className="inline-flex items-center justify-center h-9 px-4 font-medium tracking-wide text-white bg-orange-600 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
               aria-label="Admin"
               title="Admin"
             >
               Admin
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="lg:hidden">
           <button
             aria-label="Open Menu"
-            title="Open Menu"
+            title="Menu"
             className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
             onClick={() => setIsMenuOpen(true)}
           >
@@ -134,6 +134,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -144,6 +145,7 @@ const Header = () => {
                     <li>
                       <a
                         href="/"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -154,6 +156,7 @@ const Header = () => {
                     <li>
                       <a
                         href="/"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="Product pricing"
                         title="Product pricing"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -174,6 +177,7 @@ const Header = () => {
                     <li>
                       <a
                         href="/"
+                        onClick={() => setIsMenuOpen(false)}
                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition bg-blue-500 duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Sign up"
@@ -182,14 +186,15 @@ const Header = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/login"
+                        onClick={() => setIsMenuOpen(false)}
                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white bg-orange-600 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Sign up"
                       >
                         Admin
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>

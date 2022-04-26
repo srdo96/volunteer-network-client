@@ -7,7 +7,7 @@ const Home = () => {
         I grow by helping people in need.
       </h1>
       <div className="md:max-w-full lg:col-span-2  flex justify-center mt-6">
-        <form className="flex flex-col mt-4 md:flex-row ">
+        <form className="flex flex-col mt-4 md:flex-row">
           <input
             placeholder="Search..."
             type="text"
