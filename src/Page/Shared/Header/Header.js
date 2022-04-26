@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../../img/logos/logo.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,14 +17,14 @@ const Header = () => {
         </a>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               aria-label="Home"
               title="Home"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a
@@ -102,14 +103,14 @@ const Header = () => {
             <div className="absolute top-0 left-0 w-full">
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
-                  <div>
+                  <div className="w-full mx-auto">
                     <a
                       href="/"
-                      aria-label="Company"
-                      title="Company"
+                      aria-label="Volunteer Network"
+                      title="Volunteer Network"
                       className="inline-flex items-center"
                     >
-                      <img src={logo} alt="" />
+                      <img src={logo} className="h-6 sm:h-9" alt="" />
                     </a>
                   </div>
                   <div>
@@ -131,14 +132,14 @@ const Header = () => {
                 <nav>
                   <ul className="space-y-4">
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/"
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Home
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a
