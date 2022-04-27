@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Card from "../Card/Card";
 
 const Home = () => {
+  const [cards, SetCards] = useState([]);
+
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => SetCards(data));
+  }, []);
+
   return (
     <div className="mt-10">
       <h1 className="text-3xl font-bold uppercase">
@@ -20,6 +29,11 @@ const Home = () => {
             Search
           </button>
         </form>
+      </div>
+      <div className="flex">
+        {cards.map((card) => (
+          <Card key={card.id} card={card}></Card>
+        ))}
       </div>
     </div>
   );
