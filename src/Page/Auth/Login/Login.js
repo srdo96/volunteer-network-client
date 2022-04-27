@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginCover from "../../../img/9.jpg";
 import toast from "react-hot-toast";
 import {
@@ -11,11 +11,15 @@ import Loading from "../../Shared/Loading/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
   const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleEmailLogin = (e) => {
     e.preventDefault();
@@ -29,7 +33,7 @@ const Login = () => {
   }
   if (googleUser || emailUser) {
     toast.success("Login Successful");
-    navigate("/");
+    navigate(from, { replace: true });
   }
   return (
     <div>
