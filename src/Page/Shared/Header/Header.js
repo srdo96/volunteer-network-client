@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
 import logo from "../../../img/logos/logo.png";
@@ -71,14 +72,16 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="/"
+                <button
+                  onClick={() => {
+                    signOut(auth);
+                  }}
                   aria-label="Blog"
                   title="Blog"
                   className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
                   Sign out
-                </a>
+                </button>
               </li>
             </li>
           ) : (
