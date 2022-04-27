@@ -6,6 +6,7 @@ import Login from "./Page/Auth/Login/Login";
 import Register from "./Page/Auth/Register/Register";
 import NotFound from "./Page/Shared/NotFound/NotFound";
 import { Toaster } from "react-hot-toast";
+import Add from "./Page/Add/Add";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
+        <Route path="/add" element={<Add />} />
         <Route path="*" element={<NotFound></NotFound>} />
       </Routes>
     </div>

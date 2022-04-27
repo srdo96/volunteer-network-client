@@ -62,14 +62,14 @@ const Header = () => {
           {user ? (
             <li className="flex space-x-8">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/add"
                   aria-label="Blog"
                   title="Blog"
                   className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                 >
                   Add
-                </a>
+                </Link>
               </li>
               <li>
                 <button
