@@ -7,7 +7,7 @@ const Card = ({ card }) => {
   const color = ["bg-blue-900", "bg-teal-600", "bg-amber-500", " bg-red-500"];
   const randomColor = color[Math.floor(Math.random() * color.length)];
   return (
-    <div className="w-72 max-w-sm  shadow-inner">
+    <div className="w-72 max-w-sm shadow-inner">
       <div className="relative ">
         <img className="rounded shadow-xl" src={img} alt="" />
         {/* bg-blue-900 bg-teal-600 bg-amber-500 bg-red-500 */}

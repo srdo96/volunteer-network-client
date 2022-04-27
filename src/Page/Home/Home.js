@@ -30,7 +30,7 @@ const Home = () => {
           </button>
         </form>
       </div>
-      <div className="flex">
+      <div className=" mt-14 gap-y-5 mx-40 grid grid-cols-4 justify-items-center ">
         {cards.map((card) => (
           <Card key={card.id} card={card}></Card>
         ))}
